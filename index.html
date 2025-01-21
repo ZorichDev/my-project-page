@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frantech - Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #3498DB;
+            --accent-color: #E74C3C;
+        }
+
+        /* Custom Styles */
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-text h1 {
+            animation: slideInDown 1s ease-out;
+        }
+
+        .hero-text p {
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero-text .btn {
+            animation: bounceIn 1s ease-out delay-1s;
+        }
+
+        /* Floating animation for hero section */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Typing animation for hero text */
+        .typing-effect {
+            border-right: 3px solid;
+            animation: typing 3.5s steps(40, end), blink .75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary-color); }
+        }
+
+        .project-card {
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .skill-item {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-item:hover {
+            background: var(--secondary-color);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .skill-item:hover i {
+            animation: bounce 1s infinite;
+        }
+
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255,255,255,0.1);
+            transform: rotate(45deg);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover::before {
+            animation: shine 1.5s;
+        }
+
+        @keyframes shine {
+            from {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            to {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            transition: all 0.5s ease;
+        }
+
+        .navbar.scrolled {
+            background-color: var(--primary-color) !important;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .social-icons a {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: rotate(360deg) scale(1.2);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            border: 2px solid var(--primary-color);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* 3D Card Flip Animation */
+        .card-flip {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .card-flip:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-inner {
+            position: relative;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* Button hover animation */
+        .btn-animated {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-animated:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-animated:hover:after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Progress bar animation for skills */
+        .skill-progress {
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            position: relative;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .skill-progress::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background: var(--accent-color);
+            animation: progress 1.5s ease-out forwards;
+        }
+
+        @keyframes progress {
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand animate__animated animate__fadeInLeft" href="#">FRANTECH</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight animate__delay-1s" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight animate__delay-2s" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight animate__delay-3s" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight animate__delay-4s" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section d-flex align-items-center">
+        <div class="container text-center hero-text">
+            <h1 class="display-1 mb-4 typing-effect">Welcome to Frantech</h1>
+            <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">Frontend Development • UI/UX Design • Web Solutions</p>
+            <a href="#projects" class="btn btn-outline-light btn-lg btn-animated animate__animated animate__bounceIn animate__delay-2s">View My Work</a>
+        </div>
+        <div class="floating">
+            <img src="./FRANTECH_logo_cropped.png" alt="Floating Element" class="floating">
+        </div>
+    </section>
+
+      <!-- About Section -->
+      <section id="about" class="py-5 parallax">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6 animate-on-scroll">
+                    <img src="/api/placeholder/600/400" alt="About Frantech" class="img-fluid rounded shadow">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="mb-4 animate-on-scroll">About Frantech</h2>
+                    <p class="lead animate-on-scroll">Passionate about creating beautiful and functional web experiences that make a difference.</p>
+                    <p class="animate-on-scroll">With expertise in frontend development and a keen eye for design, I transform ideas into engaging digital solutions. My approach combines creativity with technical precision to deliver outstanding results.</p>
+                    <div class="social-icons mt-4 animate-on-scroll">
+                        <a href="#" class="animate__animated animate__bounce"><i class="fab fa-github"></i></a>
+                        <a href="#" class="animate__animated animate__bounce animate__delay-1s"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="animate__animated animate__bounce animate__delay-2s"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 animate-on-scroll">Featured Projects</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card-flip animate-on-scroll">
+                        <div class="card-inner">
+                            <div class="card project-card card-front">
+                                <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 1">
+                                <div class="card-body">
+                                    <h5 class="card-title">E-commerce Platform</h5>
+                                    <p class="card-text">A modern e-commerce solution with responsive design.</p>
+                                </div>
+                            </div>
+                            <div class="card-back">
+                                <div class="text-center">
+                                    <h5>Technologies Used</h5>
+                                    <p>React, Node.js, MongoDB</p>
+                                    <a href="#" class="btn btn-light mt-3">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Similar card-flip structure for other projects -->
+                <!-- Additional project cards... -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 animate-on-scroll">Technical Skills</h2>
+            <div class="row">
+                <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="skill-item animate-on-scroll">
+                        <i class="fab fa-html5 fa-3x mb-3"></i>
+                        <h4>HTML5</h4>
+                        <div class="skill-progress"></div>
+                    </div>
+                </div>
+                <!-- Similar structure for other skills -->
+                <!-- Additional skill items... -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5 animate-on-scroll">Get In Touch</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <form class="contact-form animate-on-scroll">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name">
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email">
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 btn-animated">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center animate__animated animate__fadeIn">
+            <p>&copy; 2025 Frantech. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+
+ // Animation on scroll function
+ function checkScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight;
+                
+                if (elementPosition < screenPosition - 50) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Add scroll and load event listeners
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+// Smooth scrolling for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// Initialize animations
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', () => {
+    checkScroll();
+    // Add initial animations for hero section
+    document.querySelectorAll('.hero-text > *').forEach((element, index) => {
+        element.style.animationDelay = `${index * 0.5}s`;
+        element.classList.add('animate__animated', 'animate__fadeInUp');
+    });
+});
+
+// Parallax effect for background images
+window.addEventListener('scroll', () => {
+    const parallaxElements = document.querySelectorAll('.parallax');
+    parallaxElements.forEach(element => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * 0.5;
+        element.style.transform = `translate3d(0px, ${rate}px, 0px)`;
+    });
+});
+
+// Add hover effects for project cards
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-10px) rotate(2deg)';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) rotate(0)';
+    });
+});
+
+// Animated counter for skills progress
+function animateValue(element, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        element.innerHTML = Math.floor(progress * (end - start) + start);
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Initialize skill progress bars with counters
+document.querySelectorAll('.skill-item').forEach(skill => {
+    const progress = skill.querySelector('.skill-progress');
+    if (progress) {
+        const counter = document.createElement('div');
+        counter.className = 'skill-counter';
+        counter.style.textAlign = 'center';
+        counter.style.marginTop = '10px';
+        skill.appendChild(counter);
+        
+        // Animate counter when skill comes into view
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateValue(counter, 0, 100, 2000);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+        observer.observe(skill);
+    }
+});
+
+// Form animation
+const form = document.querySelector('.contact-form');
+if (form) {
+    form.querySelectorAll('input, textarea').forEach(input => {
+        input.addEventListener('focus', function() {
+            this.style.transform = 'scale(1.02)';
+        });
+        
+        input.addEventListener('blur', function() {
+            this.style.transform = 'scale(1)';
+        });
+    });
+}
