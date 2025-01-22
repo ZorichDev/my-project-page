@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Frantech</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "3PD5AyCly9DCyS4u1",
+            });
+        })();
+    </script>
+    <script src="./email.js"></script>
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
-    
+
     <style>
         /* Essential styles for the about section */
         .parallax {
@@ -53,6 +66,7 @@
         }
     </style>
 </head>
+
 <body>
     <style>
         :root {
@@ -88,18 +102,29 @@
         }
 
         .floating img {
-            width: 100%; /* Stretch to fit container width */
-            height: 200px; /* Fixed height */
-            object-fit: cover; /* Ensures the image is cropped to fill the container */
+            width: 100%;
+            /* Stretch to fit container width */
+            height: 200px;
+            /* Fixed height */
+            object-fit: cover;
+            /* Ensures the image is cropped to fill the container */
         }
-        
+
 
 
 
         @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
         }
 
         /* Typing animation for hero text */
@@ -111,13 +136,25 @@
         }
 
         @keyframes typing {
-            from { width: 0 }
-            to { width: 100% }
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
         }
 
         @keyframes blink {
-            from, to { border-color: transparent }
-            50% { border-color: var(--secondary-color); }
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: var(--secondary-color);
+            }
         }
 
         .project-card {
@@ -127,7 +164,7 @@
 
         .project-card:hover {
             transform: translateY(-10px) rotate(2deg);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .skill-item {
@@ -157,7 +194,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             transform: rotate(45deg);
             transition: all 0.3s ease;
         }
@@ -170,6 +207,7 @@
             from {
                 transform: translateX(-100%) rotate(45deg);
             }
+
             to {
                 transform: translateX(100%) rotate(45deg);
             }
@@ -186,8 +224,13 @@
         }
 
         @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
+            from {
+                transform: translateY(-100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
         }
 
         .social-icons a {
@@ -251,7 +294,8 @@
             transform-style: preserve-3d;
         }
 
-        .card-front, .card-back {
+        .card-front,
+        .card-back {
             backface-visibility: hidden;
             position: absolute;
             top: 0;
@@ -283,7 +327,7 @@
             left: 50%;
             width: 0;
             height: 0;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
@@ -297,7 +341,7 @@
         /* Progress bar animation for skills */
         .skill-progress {
             height: 4px;
-            background: rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.2);
             position: relative;
             margin-top: 10px;
             overflow: hidden;
@@ -316,9 +360,12 @@
         }
 
         @keyframes progress {
-            to { width: 100%; }
+            to {
+                width: 100%;
+            }
         }
-            .animate-on-scroll {
+
+        .animate-on-scroll {
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.8s ease;
@@ -355,7 +402,7 @@
             height: 100%;
             backface-visibility: hidden;
             border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .card-front {
@@ -379,9 +426,9 @@
             border-top-right-radius: 15px;
         }
 
-        .container{
+        /* .container{
             display: ;
-        }
+        }*/
 
         .project-card {
             height: 100%;
@@ -389,247 +436,303 @@
 
         .btn-light:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
         }
     </style>
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
-        <div class="container">
-            <a class="navbar-brand animate__animated animate__fadeInLeft" style="color: #E74C3C;" href="#">FRANTECH</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight animate__delay-1s" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight animate__delay-2s" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight animate__delay-3s" href="#skills">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link animate__animated animate__fadeInRight animate__delay-4s" href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    </head>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero-section d-flex align-items-center">
-        <div class="container text-center hero-text">
-            <h1 class="display-1 mb-4 typing-effect">Welcome to <span style="color: #E74C3C;">MY PROJECT PAGE</span></h1>
-            <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">Frontend Development • UI/UX Design • Web Solutions</p>
-            <a href="#projects" class="btn btn-outline-light btn-lg btn-animated animate__animated animate__bounceIn animate__delay-2s">View My Work</a>
-        </div>
-        <div class="floating">
-            <img src="./chf.jpeg" alt="Floating Element" class="floating">
-        </div>
-    </section>
-    <!-- About Section -->
-    <section id="about" class="py-5 parallax">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6 animate-on-scroll">
-                    <img src="./cool pic.jpeg" alt="About Frantech" class="img-fluid rounded shadow w-75"> <!-- 75% of container width -->
-                </div>
-                <div class="col-md-6">
-                    <h2 class="mb-4 animate-on-scroll">About Frantech</h2>
-                    <p class="lead animate-on-scroll">Passionate about creating beautiful and functional web experiences that make a difference.</p>
-                    <p class="animate-on-scroll">With expertise in frontend development and a keen eye for design, I transform ideas into engaging digital solutions. My approach combines creativity with technical precision to deliver outstanding results.</p>
-                    <div class="social-icons mt-4 animate-on-scroll">
-                        <a href="#" class="animate__animated animate__bounce"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/francis-chinazor-081b8933b/" class="animate__animated animate__bounce animate__delay-1s"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="animate__animated animate__bounce animate__delay-2s"><i class="fab fa-twitter"></i></a>
-                    </div>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top ">
+            <div class="container">
+                <a class="navbar-brand animate_animated animate_fadeInLeft" style="color: #E74C3C;"
+                    href="#">FRANTECH</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link animate_animated animate_fadeInRight"
+                                href="#home">Home</a></li>
+                        <li class="nav-item"><a class="nav-link animate_animated animatefadeInRight animate_delay-1s"
+                                href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link animate_animated animatefadeInRight animate_delay-2s"
+                                href="#projects">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link animate_animated animatefadeInRight animate_delay-3s"
+                                href="#skills">Skills</a></li>
+                        <li class="nav-item"><a class="nav-link animate_animated animatefadeInRight animate_delay-4s"
+                                href="#contact">Contact</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
+        </nav>
 
-    <section id="projects" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5 animate-on-scroll">Featured Projects</h2>
-            <div class="row">
-                <!-- Project Card 1 -->
-                <div class="col-md-4">
-                    <div class="card-flip animate-on-scroll">
-                        <div class="card-inner">
-                            <div class="card project-card card-front">
-                                <img src="./ecm.jpeg" class="card-img-top" alt="Project 1">
-                                <div class="card-body">
-                                    <h5 class="card-title">E-commerce Platform</h5>
-                                    <p class="card-text">A modern e-commerce solution with responsive design.</p>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <div class="text-center">
-                                    <h5>Technologies Used</h5>
-                                    <p>React, Node.js, MongoDB</p>
-                                    <a href="http://dev.naijazoneonline.com/" class="btn btn-light mt-3">View Project</a>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section d-flex align-items-center">
+            <div class="container text-center hero-text">
+                <h1 class="display-1 mb-4 typing-effect">Welcome to <span style="color: #E74C3C;">MY PROJECT PAGE</span>
+                </h1>
+                <p class="lead mb-4 animate_animated animatefadeIn animate_delay-1s">Frontend Development • UI/UX Design
+                    • Web Solutions</p>
+                <a href="#projects"
+                    class="btn btn-outline-light btn-lg btn-animated animate_animated animatebounceIn animate_delay-2s">View
+                    My Work</a>
+            </div>
+            <div class="floating">
+                <img src="./chf.jpeg" alt="Floating Element" class="floating">
+            </div>
+        </section>
+        <!-- About Section -->
+        <section id="about" class="py-5 parallax">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 animate-on-scroll">
+                        <img src="./cool pic.jpeg" alt="About Frantech" class="img-fluid rounded shadow w-75">
+                        <!-- 75% of container width -->
                     </div>
-                </div>
-
-                <!-- Project Card 2 -->
-                <div class="col-md-4">
-                    <div class="card-flip animate-on-scroll">
-                        <div class="card-inner">
-                            <div class="card project-card card-front">
-                                <img src="./pu.jpeg" class="card-img-top" alt="Project 2">
-                                <div class="card-body">
-                                    <h5 class="card-title">Portfolio Template</h5>
-                                    <p class="card-text">Modern and responsive portfolio design.</p>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <div class="text-center">
-                                    <h5>Technologies Used</h5>
-                                    <p>HTML5, CSS3, JavaScript</p>
-                                    <a href="http://dev.naijazoneonline.com/" class="btn btn-light mt-3">View Project</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project Card 3 -->
-                <div class="col-md-4">
-                    <div class="card-flip animate-on-scroll">
-                        <div class="card-inner">
-                            <div class="card project-card card-front">
-                                <img src="./save.jpeg" class="card-img-top" alt="Project 3">
-                                <div class="card-body">
-                                    <h5 class="card-title">Dashboard UI</h5>
-                                    <p class="card-text">Interactive admin dashboard with analytics.</p>
-                                </div>
-                            </div>
-                            <div class="card-back">
-                                <div class="text-center">
-                                    <h5>Technologies Used</h5>
-                                    <p>Vue.js, Firebase, Chart.js</p>
-                                    <a href="https://titantrustio.com/" class="btn btn-light mt-3">View Project</a>
-                                </div>
-                            </div>
+                    <div class="col-md-6">
+                        <h2 class="mb-4 animate-on-scroll">About Frantech</h2>
+                        <p class="lead animate-on-scroll">Passionate about creating beautiful and functional web
+                            experiences that make a difference.</p>
+                        <p class="animate-on-scroll">With expertise in frontend development and a keen eye for design, I
+                            transform ideas into engaging digital solutions. My approach combines creativity with
+                            technical precision to deliver outstanding results.</p>
+                        <div class="social-icons mt-4 animate-on-scroll">
+                            <a href="#" class="animate_animated animate_bounce"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/francis-chinazor-081b8933b/"
+                                class="animate_animated animatebounce animate_delay-1s"><i
+                                    class="fab fa-linkedin"></i></a>
+                            <a href="#" class="animate_animated animatebounce animate_delay-2s"><i
+                                    class="fab fa-twitter"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-       <!-- Skills Section -->
-    <section id="skills" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5 animate-on-scroll">Technical Skills</h2>
-            <div class="row g-4">
-                <!-- HTML5 -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-item animate-on-scroll">
-                        <i class="fab fa-html5 fa-3x"></i>
-                        <h4>HTML5</h4>
-                        <div class="skill-progress"></div>
+        <section id="projects" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5 animate-on-scroll">Featured Projects</h2>
+                <div class="row">
+                    <!-- Project Card 1 -->
+                    <div class="col-md-4">
+                        <div class="card-flip animate-on-scroll">
+                            <div class="card-inner">
+                                <div class="card project-card card-front">
+                                    <img src="./ecm.jpeg" class="card-img-top" alt="Project 1">
+                                    <div class="card-body">
+                                        <h5 class="card-title">E-commerce Platform</h5>
+                                        <p class="card-text">A modern e-commerce solution with responsive design.</p>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="text-center">
+                                        <h5>Technologies Used</h5>
+                                        <p>React, Node.js, MongoDB</p>
+                                        <a href="http://dev.naijazoneonline.com/" class="btn btn-light mt-3">View
+                                            Project</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- CSS -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-item animate-on-scroll">
-                        <i class="fa-solid fa-file-code fa-3x"></i>
-                        <h4>CSS</h4>
-                        <div class="skill-progress"></div>
+                    <!-- Project Card 2 -->
+                    <div class="col-md-4">
+                        <div class="card-flip animate-on-scroll">
+                            <div class="card-inner">
+                                <div class="card project-card card-front">
+                                    <img src="./pu.jpeg" class="card-img-top" alt="Project 2">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Portfolio Template</h5>
+                                        <p class="card-text">Modern and responsive portfolio design.</p>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="text-center">
+                                        <h5>Technologies Used</h5>
+                                        <p>HTML5, CSS3, JavaScript</p>
+                                        <a href="http://dev.naijazoneonline.com/" class="btn btn-light mt-3">View
+                                            Project</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- JavaScript -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-item animate-on-scroll">
-                        <i class="fa-brands fa-square-js fa-3x"></i>
-                        <h4>JavaScript</h4>
-                        <div class="skill-progress"></div>
-                    </div>
-                </div>
-
-                <!-- Bootstrap -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-item animate-on-scroll">
-                        <i class="fa-brands fa-bootstrap fa-3x"></i>
-                        <h4>Bootstrap</h4>
-                        <div class="skill-progress"></div>
-                    </div>
-                </div>
-
-                <!-- GitHub -->
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="skill-item animate-on-scroll">
-                        <i class="fa-brands fa-github fa-3x"></i>
-                        <h4>GitHub</h4>
-                        <div class="skill-progress"></div>
+                    <!-- Project Card 3 -->
+                    <div class="col-md-4">
+                        <div class="card-flip animate-on-scroll">
+                            <div class="card-inner">
+                                <div class="card project-card card-front">
+                                    <img src="./save.jpeg" class="card-img-top" alt="Project 3">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Dashboard UI</h5>
+                                        <p class="card-text">Interactive admin dashboard with analytics.</p>
+                                    </div>
+                                </div>
+                                <div class="card-back">
+                                    <div class="text-center">
+                                        <h5>Technologies Used</h5>
+                                        <p>Vue.js, Firebase, Chart.js</p>
+                                        <a href="https://titantrustio.com/" class="btn btn-light mt-3">View Project</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- Skills Section -->
+        <section id="skills" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5 animate-on-scroll">Technical Skills</h2>
+                <div class="row g-4">
+                    <!-- HTML5 -->
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="skill-item animate-on-scroll">
+                            <i class="fab fa-html5 fa-3x"></i>
+                            <h4>HTML5</h4>
+                            <div class="skill-progress"></div>
+                        </div>
+                    </div>
 
-    <section id="contact" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5 animate-on-scroll">Get In Touch</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <form class="contact-form animate-on-scroll">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Your Name">
+                    <!-- CSS -->
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="skill-item animate-on-scroll">
+                            <i class="fa-solid fa-file-code fa-3x"></i>
+                            <h4>CSS</h4>
+                            <div class="skill-progress"></div>
                         </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="Your Email">
+                    </div>
+
+                    <!-- JavaScript -->
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="skill-item animate-on-scroll">
+                            <i class="fa-brands fa-square-js fa-3x"></i>
+                            <h4>JavaScript</h4>
+                            <div class="skill-progress"></div>
                         </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                    </div>
+
+                    <!-- Bootstrap -->
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="skill-item animate-on-scroll">
+                            <i class="fa-brands fa-bootstrap fa-3x"></i>
+                            <h4>Bootstrap</h4>
+                            <div class="skill-progress"></div>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg w-100 btn-animated">Send Message</button>
-                    </form>
+                    </div>
+
+                    <!-- GitHub -->
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="skill-item animate-on-scroll">
+                            <i class="fa-brands fa-github fa-3x"></i>
+                            <h4>GitHub</h4>
+                            <div class="skill-progress"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Required JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    <script>
-        // Animation on scroll function
-        function checkScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight;
-                
-                if (elementPosition < screenPosition - 50) {
-                    element.classList.add('visible');
+
+        <section id="contact" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5 animate-on-scroll">Get In Touch</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <form class="contact-form animate-on-scroll">
+                            <div class="mb-3">
+                                <input type="text" id="name" class="form-control" placeholder="Your Name">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" id="email" class="form-control" placeholder="Your Email">
+                            </div>
+                            <div class="mb-3">
+                                <textarea id="message" class="form-control" rows="5"
+                                    placeholder="Your Message"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" id="subject" class="form-control" placeholder="Subject">
+                            </div>
+                            <button type="button" class="btn btn-primary btn-lg w-100 btn-animated"
+                                onclick="sendMail()">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function sendMail() {
+                let params = {
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    message: document.getElementById("message").value,
+                    subject: document.getElementById("subject").value,
+                };
+
+                try {
+                    emailjs.init("3PD5AyCly9DCyS4u1");
+                    emailjs.send("service_ptzp7rd", "template_uvkbxrd", params)
+                        .then(function (response) {
+                            alert("Email sent successfully!");
+                            console.log("SUCCESS:", response);
+                        })
+                        .catch(function (error) {
+                            console.error("Failed to send email:", error);
+                            alert("Failed to send email. Please try again later.");
+                        });
+                } catch (error) {
+                    console.error("Error initializing or sending email:", error);
+                    alert("An unexpected error occurred. Please check the console for details.");
                 }
-            });
-        }
+            }
 
-        // Add scroll and load event listeners
-        window.addEventListener('scroll', checkScroll);
-        window.addEventListener('load', checkScroll);
+        </script>
 
-             // Animation on scroll function
-             function checkScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight;
-                
-                if (elementPosition < screenPosition - 50) {
-                    element.classList.add('visible');
-                }
-            });
-        }
 
-        // Add scroll and load event listeners
-        window.addEventListener('scroll', checkScroll);
-        window.addEventListener('load', checkScroll);
-    </script>
-</body>
+        <!-- Required JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+        <script>
+            // Animation on scroll function
+            function checkScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight;
+
+                    if (elementPosition < screenPosition - 50) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+
+            // Add scroll and load event listeners
+            window.addEventListener('scroll', checkScroll);
+            window.addEventListener('load', checkScroll);
+
+            // Animation on scroll function
+            function checkScroll() {
+                const elements = document.querySelectorAll('.animate-on-scroll');
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight;
+
+                    if (elementPosition < screenPosition - 50) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+
+            // Add scroll and load event listeners
+            window.addEventListener('scroll', checkScroll);
+            window.addEventListener('load', checkScroll);
+        </script>
+    </body>
+
 </html>
+
